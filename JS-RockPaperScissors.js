@@ -45,16 +45,6 @@ function playRound(humanChoice, computerChoice) {
 
     console.log(`Current Score -> Human: ${humanScore}, Computer: ${computerScore}`);
 }
-// Play 5 rounds
-for (let i = 0; i < 5; i++) {
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
-
-    console.log("Human choice:", humanChoice);
-    console.log("computerChoice:", computerChoice);
-
-    playRound(humanChoice, computerChoice);
-}
 
 // Declare the overall winner
 if (humanScore > computerScore) {
