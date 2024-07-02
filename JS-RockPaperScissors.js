@@ -61,7 +61,7 @@ const playRound = (playerSelection) => {
 if (playerScore >= 5) {
     winnerDiv.textContent = "Congratulations! You won the game!";
 } else if (computerScore >= 5) {
-    winnerDiv.textContent = "Sorry you lose, the computer won the game";
+    winnerDiv.textContent = "Sorry you lose, the computer won the game!";
 }
 };
 
