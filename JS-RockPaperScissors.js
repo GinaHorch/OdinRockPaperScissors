@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 // Function to get computer choice
 const getComputerChoice = () => {
     const choices = ["Rock", "Paper", "Scissors"];
@@ -7,11 +10,19 @@ const getComputerChoice = () => {
 
 // Function to play a single round
 const playRound = (playerSelection) => {
+    if (playerScore >=5 || computerScore >=5) {
+        return; // Game over, stop playing
+    }
+
     const computerSelection = getComputerChoice();
     const resultDiv = document.querySelector("#results");
+    const playerScoreElem = document.querySelector('#playerScore');
+    const computerScoreElem = document.querySelector('#computerScore');
+    const winnerDiv = document.querySelector('#winner');
 
 // Clear previous results
     resultDiv.textContent = '';
+    winnerDiv.textContent = '';
 
 // Create elements to display results
     const playerSelectionElem = document.createElement('p');
@@ -27,9 +38,11 @@ const playRound = (playerSelection) => {
         (playerSelection === "Paper" && computerSelection === "Rock") ||
         (playerSelection === "Scissors" && computerSelection === "Paper")
     ) {
-        resultMessage += "You win!";
+        resultMessage = "You win!";
+        playerScore++;
     } else {
-        resultMessage += "You lose!";
+        resultMessage = "You lose!";
+        computerScore++;
     }
     
     const resultMessageElem = document.createElement('p');
@@ -39,6 +52,17 @@ const playRound = (playerSelection) => {
     resultDiv.appendChild(playerSelectionElem);
     resultDiv.appendChild(computerSelectionElem);
     resultDiv.appendChild(resultMessageElem);
+
+// Update scores
+    playerScoreElem.textContent = playerScore;
+    computerScoreElem.textContent = computerScore;
+
+// Check if either player has won
+if (playerScore >= 5) {
+    winnerDiv.textContent = "Congratulations! You won the game!";
+} else if (computerScore >= 5) {
+    winnerDiv.textContent = "Sorry you lose, the computer won the game";
+}
 };
 
 // Adding event listeners to the buttons
